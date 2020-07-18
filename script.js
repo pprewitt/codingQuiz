@@ -1,13 +1,14 @@
 var startButton = document.getElementById('start-btn');
+var countdownEl = document.getElementById('countdown');
 var questionContainer = document.getElementById('question-container');
 const questionEl = document.getElementById('question');
 const answerBtns = document.getElementById('answer-buttons');
 startButton.addEventListener('click', startGame)
-var gameTimer;
-var gameLength = 80;
+var secondsLeft = 80;
 var highScore = 0;
-var playerScore = gameLength;
+var playerScore = secondsLeft;
 var questionIndex = 0;
+
 
 function startGame(){
 
@@ -15,6 +16,7 @@ function startGame(){
     console.log('started');
     questionContainer.classList.remove('hide');
     showQuestion();
+    startTimer();
 };
 
 function nextQuestion(){
@@ -53,9 +55,14 @@ function selectAnswer(e){
     Array.from(answerBtns.children).forEach(button =>{
         setStatusClass(button, button.dataset.correct);
     });
+    if (selectedButton=!correct){
+        timerDeduct();
+    }
     if (questionIndex<questions.length){
         setTimeout(nextQuestion, 750);
-    };
+    }; 
+    
+
     
 };
 function setStatusClass(element, correct){
@@ -80,10 +87,20 @@ function correctAnswer(){
 
 };
 function timerDeduct(){
-
+    (secondsLeft-=10);
 };
 function startTimer(){
-
+    var timerInterval = setInterval(function() {
+        secondsLeft--;
+        countdownEl.textContent = secondsLeft;
+    
+        if(secondsLeft === 0) {
+          clearInterval(timerInterval);
+        //   gameOverMessage();
+        }
+    
+      }, 1000);
+    
 };
 const questions = [
     {
@@ -99,8 +116,8 @@ const questions = [
     {
         question: 'Question 2?',
         answers: [
-           { text: '5', correct: false },
-           { text: '6', correct: true },
+           { text: '5', correct: true },
+           { text: '6', correct: false },
            { text: '7', correct: false },
            { text: '8', correct: false },
 
@@ -110,8 +127,8 @@ const questions = [
         question: 'Question 3?',
         answers: [
            { text: '9', correct: false },
-           { text: '10', correct: true },
-           { text: '11', correct: false },
+           { text: '10', correct: false },
+           { text: '11', correct: true },
            { text: '12', correct: false },
 
         ]
@@ -120,9 +137,9 @@ const questions = [
         question: 'Question 4?',
         answers: [
            { text: '13', correct: false },
-           { text: '14', correct: true },
+           { text: '14', correct: false },
            { text: '15', correct: false },
-           { text: '16', correct: false },
+           { text: '16', correct: true },
 
         ]
     },
