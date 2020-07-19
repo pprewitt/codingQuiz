@@ -82,21 +82,35 @@ function clearStatusClass(element) {
     element.classList.remove('correct');
     element.classList.remove('wrong');
 }
+
 function gameOver(){
     var playerScore = secondsLeft;
     questionEl.innerText='Game Over';
     resetQuestionCard();
-    score.innerText=playerScore;
     var person = prompt("Please enter your initials!",  "XX");
     if (person == null || person == "") {
         txt = "Player not recorded.";
      } else {
             player.innerText= person;
-        }
-};
-// function renderHighScore{
+        };
+    
+        var thisScoreRecord ={initials: person ,thisScore: playerScore};
+        var arrayStored = JSON.parse((localStorage.getItem('highscore')));
+        if (!arrayStored){
+            arrayStored = []
+            };
+        arrayStored.push(thisScoreRecord);
+        localStorage.setItem('highscore', JSON.stringify(arrayStored));
+        var highestScore =JSON.parse(localStorage.getItem('highscore'));
+    
+    
 
-// }
+    
+    };
+
+
+
+
 function timerDeduct(){
     (secondsLeft-=10);
 };
