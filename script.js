@@ -5,9 +5,12 @@ const questionEl = document.getElementById('question');
 const answerBtns = document.getElementById('answer-buttons');
 startButton.addEventListener('click', startGame)
 var secondsLeft = 80;
-var highScore = 0;
-var playerScore = secondsLeft;
+var score = document.getElementById('score');
 var questionIndex = 0;
+var inProgress = false;
+var player= document.getElementById('player');
+
+
 
 
 function startGame(){
@@ -17,15 +20,10 @@ function startGame(){
     questionContainer.classList.remove('hide');
     showQuestion();
     startTimer();
+    inProgress = true;
 };
 
-function nextQuestion(){
-    
-    questions[questionIndex++];
-    showQuestion();
 
-
-};
 function showQuestion(){
     var question = questions[questionIndex];
     resetQuestionCard();
@@ -57,12 +55,16 @@ function selectAnswer(e){
     });
     if (selectedButton=!correct){
         timerDeduct();
-    }
-    if (questionIndex<questions.length){
-        setTimeout(nextQuestion, 750);
-    }; 
+    };
+    if (questionIndex+1<questions.length){
+        questionIndex++;
+        setTimeout(showQuestion, 650);
+    } else {
+        inProgress= false;
+        gameOver();
+           
+    };
     
-
     
 };
 function setStatusClass(element, correct){
@@ -74,21 +76,31 @@ function setStatusClass(element, correct){
         element.classList.add('wrong');
         
         
-    }
-}
+    };
+};
 function clearStatusClass(element) {
     element.classList.remove('correct');
     element.classList.remove('wrong');
 }
-function wrongAnswer(){
-
+function gameOver(){
+    var playerScore = secondsLeft;
+    questionEl.innerText='Game Over';
+    resetQuestionCard();
+    score.innerText=playerScore;
+    var person = prompt("Please enter your initials!",  "XX");
+    if (person == null || person == "") {
+        txt = "Player not recorded.";
+     } else {
+            player.innerText= person;
+        }
 };
-function correctAnswer(){
+// function renderHighScore{
 
-};
+// }
 function timerDeduct(){
     (secondsLeft-=10);
 };
+
 function startTimer(){
     var timerInterval = setInterval(function() {
         secondsLeft--;
@@ -96,12 +108,18 @@ function startTimer(){
     
         if(secondsLeft === 0) {
           clearInterval(timerInterval);
-        //   gameOverMessage();
+          gameOver();
+        };
+        if (questionIndex===questions.length-1) {
+            clearInterval(timerInterval)
+            
         }
-    
+
       }, 1000);
     
 };
+
+
 const questions = [
     {
         question: 'Question 1?',
@@ -152,5 +170,5 @@ const questions = [
            { text: '20', correct: false },
 
         ]
-    },
+    }
 ]
