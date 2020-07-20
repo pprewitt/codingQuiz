@@ -1,12 +1,13 @@
+    //get html scores list, localstorage scores, clear scores button
     const highScoresList = document.getElementById("highScoresList");
     var highScore = JSON.parse(localStorage.getItem('highScore')) || [];
     const clearScores = document.getElementById("clear-scores");
-
+//click event to clear scores
     clearScores.addEventListener("click", function clearClick(highScore){
         localStorage.clear();
         highScoresList.innerHTML ="";
     } )
-    
+ //defining function to sort scores for highest first   
 function compareValues(score, order = 'asc') {
     return function innerSort(a, b) {
       if (!a.hasOwnProperty(score) || !b.hasOwnProperty(score)) {
@@ -30,6 +31,7 @@ function compareValues(score, order = 'asc') {
       );
     };
   }
+//calling functions to sort and display scores limited to top 5
   highScore.sort(compareValues("score", "desc"));
     highScore.splice(5);
         highScoresList.innerHTML =

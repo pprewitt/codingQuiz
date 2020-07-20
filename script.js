@@ -1,4 +1,4 @@
-
+//getting document buttons, timer, question section, answer buttons, score, sound effects
 var countdownEl = document.getElementById('countdown');
 var questionContainer = document.getElementById('question-container');
 const questionEl = document.getElementById('question');
@@ -14,7 +14,7 @@ const wrongAnswerSound = new Audio("wrong-buzz.wav");
 
 
 
-
+//start game function, fires after doc load
 function startGame(){
 
     console.log('started');
@@ -24,7 +24,7 @@ function startGame(){
     inProgress = true;
 };
 
-
+//pushes questions from array into html
 function showQuestion(){
     var question = questions[questionIndex];
     resetQuestionCard();
@@ -41,12 +41,14 @@ function showQuestion(){
         
     });
 };
+//clears html for Q&A
 function resetQuestionCard() {
     clearStatusClass(document.body);
     while (answerBtns.firstChild){
         answerBtns.removeChild(answerBtns.firstChild);
     };
 };
+//select answer function defining right.wrong: fires sound fx, moves thru array
 function selectAnswer(e){
     var selectedButton = e.target
     var correct = selectedButton.dataset.correct;
@@ -71,6 +73,7 @@ function selectAnswer(e){
     
     
 };
+//changes styling for right/wrong answers
 function setStatusClass(element, correct){
     clearStatusClass(element);
     if (correct){
@@ -82,11 +85,12 @@ function setStatusClass(element, correct){
         
     };
 };
+//sets neutral styling for background answers
 function clearStatusClass(element) {
     element.classList.remove('correct');
     element.classList.remove('wrong');
 }
-
+//game over: fires promt for initials, defines score, clears question, shows get scores, pushes local storage
 function gameOver(){
     const highScoresList = document.getElementById("highScoresList");
     var playerScore = secondsLeft;
@@ -113,11 +117,11 @@ function gameOver(){
 
 
 
-
+//deduct 10 sec for wrong answer
 function timerDeduct(){
     (secondsLeft-=10);
 };
-
+//start timer, stop at 0, stop at last question---not working properly
 function startTimer(){
     var timerInterval = setInterval(function() {
         secondsLeft--;
@@ -136,7 +140,7 @@ function startTimer(){
     
 };
 
-
+//question object array
 const questions = [
     {
         question: 'An if / else statement condition is enclosed within ________.',
