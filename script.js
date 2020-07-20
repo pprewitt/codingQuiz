@@ -96,19 +96,15 @@ function gameOver(){
     toggleEL.innerText="Score:"; 
     var scoreButton = document.getElementById('score-btn');
     scoreButton.classList.remove('hide');
-    
+
+    //local storage function for scores
         var thisScore ={score: playerScore, initials: person};
         var highScore = JSON.parse(localStorage.getItem('highScore')) || [];
         
         highScore.push(thisScore);
         localStorage.setItem('highScore', JSON.stringify(highScore));
-        highScore.sort((a, b)=>b.thisScore - a.thisScore);
-            highScore.splice(5);
         
-    
-    
-
-    
+        
     };
 
 
