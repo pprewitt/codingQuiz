@@ -1,4 +1,4 @@
-var scoreButton = document.getElementById('score-btn');
+
 var countdownEl = document.getElementById('countdown');
 var questionContainer = document.getElementById('question-container');
 const questionEl = document.getElementById('question');
