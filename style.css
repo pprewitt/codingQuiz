@@ -81,4 +81,16 @@ body.wrong {
 .hide{
     display: none;
 }
+h1{
+    text-align: center;
+}
+ul{
 
+    list-style-type: none;
+    text-align: center;
+    
+}
+#clear-scores{
+    display: flex;
+    margin: 0 auto;
+}

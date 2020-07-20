@@ -1,6 +1,11 @@
     const highScoresList = document.getElementById("highScoresList");
     var highScore = JSON.parse(localStorage.getItem('highScore')) || [];
+    const clearScores = document.getElementById("clear-scores");
 
+    clearScores.addEventListener("click", function clearClick(highScore){
+        localStorage.clear();
+        highScoresList.innerHTML ="";
+    } )
     
 function compareValues(score, order = 'asc') {
     return function innerSort(a, b) {
@@ -32,3 +37,4 @@ function compareValues(score, order = 'asc') {
             return `<li>${thisScore.initials}-${thisScore.score}</li>`;
         })
         .join("");
+    
