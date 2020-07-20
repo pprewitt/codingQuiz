@@ -9,7 +9,8 @@ var score = document.getElementById('score');
 var questionIndex = 0;
 var inProgress = false;
 var player= document.getElementById('player');
-
+const rightAnswerSound = new Audio("success-jingle.wav");
+const wrongAnswerSound = new Audio("wrong-buzz.wav");
 
 
 
@@ -55,6 +56,9 @@ function selectAnswer(e){
     });
     if (selectedButton=!correct){
         timerDeduct();
+        wrongAnswerSound.play();
+    } else {
+        rightAnswerSound.play();
     };
     if (questionIndex+1<questions.length){
         questionIndex++;
