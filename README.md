@@ -13,7 +13,7 @@ This one kicked my butt. I am disappointed that I wasnt able to get the timer to
 
 ## Deployment
 
-This site is deployed within github pages (https://pprewitt.github.io/responsiveportfolio/)
+This site is deployed within github pages (https://pprewitt.github.io/codingQuiz/)
 
 ## Helpful Resources
 [JamesQQuick Quiz App Save High Scores Local Storage Tutorial](https://www.youtube.com/watch?v=DFhmNLKwwGw&t=389s)
