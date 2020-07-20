@@ -15,6 +15,10 @@ This one kicked my butt. I am disappointed that I wasnt able to get the timer to
 
 This site is deployed within github pages (https://pprewitt.github.io/codingQuiz/)
 
+## Screenshot
+![screenshot](codingQuiz.png?raw=true)
+
+
 ## Helpful Resources
 [JamesQQuick Quiz App Save High Scores Local Storage Tutorial](https://www.youtube.com/watch?v=DFhmNLKwwGw&t=389s)
 [Olayinka and James on Sorting Arrays](https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/ )
