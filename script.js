@@ -135,52 +135,52 @@ function startTimer(){
 
 const questions = [
     {
-        question: 'Question 1?',
+        question: 'An if / else statement condition is enclosed within ________.',
         answers: [
-           { text: '1', correct: false },
-           { text: '2', correct: true },
-           { text: '3', correct: false },
-           { text: '4', correct: false },
+           { text: 'Quotation Marks' , correct: false },
+           { text: 'Parentheses', correct: true },
+           { text: 'Curly Brackets', correct: false },
+           { text: 'Square Brackets', correct: false },
 
         ]
     },
     {
-        question: 'Question 2?',
+        question: 'Math.random() returns:',
         answers: [
-           { text: '5', correct: true },
-           { text: '6', correct: false },
-           { text: '7', correct: false },
-           { text: '8', correct: false },
+           { text: 'A random number from 0 to 1', correct: true },
+           { text: 'A random number from 1 to 10', correct: false },
+           { text: 'A random number from -1 to 0', correct: false },
+           { text: 'A random number/length', correct: false },
 
         ]
     },
     {
-        question: 'Question 3?',
+        question: 'Which HTML element contains the JavaScript??',
         answers: [
-           { text: '9', correct: false },
-           { text: '10', correct: false },
-           { text: '11', correct: true },
-           { text: '12', correct: false },
+           { text: '<js>', correct: false },
+           { text: '<scripting>', correct: false },
+           { text: '<script>', correct: true },
+           { text: '<javascript>', correct: false },
 
         ]
     },
     {
-        question: 'Question 4?',
+        question: 'JavaScript arrays can store ________.',
         answers: [
-           { text: '13', correct: false },
-           { text: '14', correct: false },
-           { text: '15', correct: false },
-           { text: '16', correct: true },
+           { text: 'Numbers ', correct: false },
+           { text: 'Strings', correct: false },
+           { text: 'Other arrays', correct: false },
+           { text: 'All of the above', correct: true },
 
         ]
     },
     {
-        question: 'Question 5?',
+        question: 'What operator means "equal value and equal type"?',
         answers: [
-           { text: '17', correct: false },
-           { text: '18', correct: true },
-           { text: '19', correct: false },
-           { text: '20', correct: false },
+           { text: '=', correct: false },
+           { text: '===', correct: true },
+           { text: '!=', correct: false },
+           { text: '=>', correct: false },
 
         ]
     }
