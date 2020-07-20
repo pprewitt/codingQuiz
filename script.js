@@ -1,9 +1,9 @@
-var startButton = document.getElementById('start-btn');
+var scoreButton = document.getElementById('score-btn');
 var countdownEl = document.getElementById('countdown');
 var questionContainer = document.getElementById('question-container');
 const questionEl = document.getElementById('question');
 const answerBtns = document.getElementById('answer-buttons');
-startButton.addEventListener('click', startGame)
+document.addEventListener('DOMContentLoaded', startGame)
 var secondsLeft = 80;
 var score = document.getElementById('score');
 var questionIndex = 0;
@@ -13,9 +13,9 @@ var player= document.getElementById('player');
 
 
 
+
 function startGame(){
 
-    startButton.classList.add('hide')
     console.log('started');
     questionContainer.classList.remove('hide');
     showQuestion();
@@ -84,24 +84,27 @@ function clearStatusClass(element) {
 }
 
 function gameOver(){
+    const highScoresList = document.getElementById("highScoresList");
     var playerScore = secondsLeft;
+    var toggleEL = document.getElementById('toggle');
     questionEl.innerText='Game Over';
     resetQuestionCard();
     var person = prompt("Please enter your initials!",  "XX");
     if (person == null || person == "") {
         txt = "Player not recorded.";
-     } else {
-            player.innerText= person;
-        };
+     };
+    toggleEL.innerText="Score:"; 
+    var scoreButton = document.getElementById('score-btn');
+    scoreButton.classList.remove('hide');
     
-        var thisScoreRecord ={initials: person ,thisScore: playerScore};
-        var arrayStored = JSON.parse((localStorage.getItem('highscore')));
-        if (!arrayStored){
-            arrayStored = []
-            };
-        arrayStored.push(thisScoreRecord);
-        localStorage.setItem('highscore', JSON.stringify(arrayStored));
-        var highestScore =JSON.parse(localStorage.getItem('highscore'));
+        var thisScore ={score: playerScore, initials: person};
+        var highScore = JSON.parse(localStorage.getItem('highScore')) || [];
+        
+        highScore.push(thisScore);
+        localStorage.setItem('highScore', JSON.stringify(highScore));
+        highScore.sort((a, b)=>b.thisScore - a.thisScore);
+            highScore.splice(5);
+        
     
     
 

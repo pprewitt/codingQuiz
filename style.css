@@ -66,12 +66,16 @@ body.wrong {
     font-weight: bold;
     padding: 10px 20px;
 }
+#score-btn{
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    display: "hide";
+}
 .controls{
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
-.hide {
-    display: none;
-}
+
